@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "1.5.31"
     id("com.github.johnrengelman.shadow") version "7.0.0"
     `maven-publish`
 }
@@ -29,6 +29,9 @@ dependencies {
 }
 
 tasks{
+    compileKotlin{
+        kotlinOptions.jvmTarget = "16"
+    }
     processResources {
         filesMatching("*.yml") {
             expand(project.properties)

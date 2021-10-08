@@ -1,10 +1,10 @@
-package kr.kro.minestar
+package kr.kro.minestar.pack
 
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
     companion object {
-        var pl: Main? = null
+        lateinit var pl: Main
         const val prefix = "§f§7MineCraftDefaultProject§f"
     }
 
