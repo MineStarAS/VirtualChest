@@ -26,6 +26,19 @@ tasks {
         dependsOn("dokkaHtml")
         from("$buildDir/dokka/html")
     }
+    shadowJar {
+        archiveBaseName.set(project.name)
+        archiveClassifier.set("")
+        archiveVersion.set(project.version.toString())
+        doLast {
+            // jar file copy
+            copy {
+                from(archiveFile)
+                val plugins = File("C:\\Users\\MineStar\\Desktop\\MC Server folder\\MCserver 1.17.1 - vanilla\\plugins")
+                into(if (File(plugins, archiveFileName.get()).exists()) plugins else plugins)
+            }
+        }
+    }
 }
 
 publishing {
