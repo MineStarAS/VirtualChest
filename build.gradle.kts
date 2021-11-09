@@ -49,9 +49,10 @@ publishing {
                 }
 
                 pom {
-                    name.set(rootProject.name)
-                    description.set("This is minecraft default project")
-                    url.set("https://github.com/MineStarAS/MineCraftDefaultProject")
+                    val repository = rootProject.name
+                    name.set(repository)
+                    description.set("This is MineStar's $repository plugin")
+                    url.set("https://github.com/MineStarAS/$repository")
                     licenses {
                         license {
                             name.set("GNU GENERAL PUBLIC LICENSE Version 3")
@@ -66,9 +67,9 @@ publishing {
                         }
                     }
                     scm {
-                        connection.set("scm:git:https://github.com/MineStarAS/MineCraftDefaultProject.git")
-                        developerConnection.set("scm:git:https://github.com/MineStarAS/MineCraftDefaultProject.git")
-                        url.set("https://github.com/MineStarAS/MineCraftDefaultProject.git")
+                        connection.set("scm:git:https://github.com/MineStarAS/$repository.git")
+                        developerConnection.set("scm:git:https://github.com/MineStarAS/$repository.git")
+                        url.set("https://github.com/MineStarAS/$repository.git")
                     }
                 }
             }
@@ -94,4 +95,3 @@ dependencies {
 
     //MineStar
 }
-
