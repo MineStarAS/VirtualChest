@@ -1,12 +1,33 @@
 plugins {
     kotlin("jvm") version "1.5.31"
-    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("com.github.johnrengelman.shadow") version "7.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
 }
 
 group = "kr.kro.minestar"
-version = "1.0.0"
+version = "1.0.1"
+
+
+
+repositories {
+    mavenCentral()
+    maven("https://papermc.io/repo/repository/maven-public/")
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots/") {
+        name = "sonatype-oss-snapshots"
+    }
+    maven("https://repo.projecttl.net/repository/maven-public/")
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
+    implementation("net.kyori:adventure-api:4.9.3")
+    compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
+
+    //project_TL
+
+    //MineStar
+}
 
 tasks {
     compileKotlin{
@@ -14,6 +35,11 @@ tasks {
     }
     javadoc {
         options.encoding = "UTF-8"
+    }
+    processResources {
+        filesMatching("*.yml") {
+            expand(project.properties)
+        }
     }
 
     create<Jar>("sourcesJar") {
@@ -90,21 +116,3 @@ publishing {
     }
 }
 
-repositories {
-    mavenCentral()
-    maven("https://papermc.io/repo/repository/maven-public/")
-    maven(url = "https://oss.sonatype.org/content/repositories/snapshots/") {
-        name = "sonatype-oss-snapshots"
-    }
-    maven("https://repo.projecttl.net/repository/maven-public/")
-}
-
-dependencies {
-    implementation(kotlin("stdlib"))
-    implementation("net.kyori:adventure-api:4.7.0")
-    compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
-
-    //project_TL
-
-    //MineStar
-}
