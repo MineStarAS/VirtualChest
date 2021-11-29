@@ -1,14 +1,12 @@
 plugins {
-    kotlin("jvm") version "1.5.31"
+    kotlin("jvm") version "1.6.0"
     id("com.github.johnrengelman.shadow") version "7.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
 }
 
 group = "kr.kro.minestar"
-version = "1.0.1"
-
-
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -20,13 +18,14 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    implementation("net.kyori:adventure-api:4.9.3")
+    compileOnly(kotlin("stdlib"))
+    compileOnly("net.kyori:adventure-api:4.9.3")
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
 
     //project_TL
 
     //MineStar
+    implementation("kr.kro.minestar:Utility-API:1.2.6")
 }
 
 tasks {
