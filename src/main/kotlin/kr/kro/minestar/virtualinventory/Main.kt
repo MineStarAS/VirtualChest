@@ -1,5 +1,7 @@
-package kr.kro.minestar.pack
+package kr.kro.minestar.virtualinventory
 
+import kr.kro.minestar.virtualinventory.events.AlwaysEvent
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
@@ -12,6 +14,7 @@ class Main : JavaPlugin() {
         pl = this
         logger.info("$prefix §aEnable")
         getCommand("cmd")?.setExecutor(CMD())
+        Bukkit.getPluginManager().registerEvents(AlwaysEvent(), this)
     }
 
     override fun onDisable() {
