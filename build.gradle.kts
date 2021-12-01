@@ -25,7 +25,10 @@ dependencies {
     //project_TL
 
     //MineStar
-    implementation("kr.kro.minestar:Utility-API:1.2.6")
+    implementation("kr.kro.minestar:Utility-API:1.2.7")
+
+    //other
+    implementation("org.reflections:reflections:0.9.12")
 }
 
 tasks {

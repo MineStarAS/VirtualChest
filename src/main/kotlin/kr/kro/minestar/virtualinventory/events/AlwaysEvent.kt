@@ -1,12 +1,13 @@
 package kr.kro.minestar.virtualinventory.events
 
+import kr.kro.minestar.virtualinventory.Main.Companion.pl
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 
-class AlwaysEvent: Listener {
+class AlwaysEvent : Listener {
     @EventHandler
-    fun join(e: PlayerJoinEvent){
-
+    fun join(e: PlayerJoinEvent) {
+        pl.registerInventories(e.player)
     }
 }
