@@ -1,5 +1,6 @@
-package kr.kro.minestar.virtualinventory.functions.interfaces
+package kr.kro.minestar.virtualinventory.functions
 
+import kr.kro.minestar.utility.inventory.howManyHasSameItem
 import kr.kro.minestar.utility.inventory.howManyToAdd
 import kr.kro.minestar.utility.item.*
 import kr.kro.minestar.utility.number.addComma
@@ -21,6 +22,7 @@ import java.io.File
 
 interface VirtualInventory : Listener {
     val title: String
+    val iconItem: ItemStack
     val player: Player
     val file: File
     val data: YamlConfiguration
@@ -55,10 +57,13 @@ interface VirtualInventory : Listener {
         if (e.inventory != gui) return
         e.isCancelled = true
         val item = e.currentItem ?: return
-
-        when (e.click) {
+        if (e.clickedInventory == e.view.topInventory) when (e.click) {
             ClickType.LEFT -> takeOutItem(item.type.item(), 64)
-            ClickType.DOUBLE_CLICK -> takeOutItem(item.type.item(), player.inventory.howManyToAdd(item.type.item()))
+            ClickType.SHIFT_LEFT -> takeOutItem(item.type.item(), player.inventory.howManyToAdd(item.type.item()))
+        }
+        if (e.clickedInventory == e.view.bottomInventory) when (e.click) {
+            ClickType.LEFT -> insertItem(item)
+            ClickType.SHIFT_LEFT -> insertAllItem(item)
         }
     }
 
@@ -115,6 +120,24 @@ interface VirtualInventory : Listener {
         if (map[slot]!! < a) a = map[slot]!!
         map[slot] = map[slot]!! - a
         inv.addItem(slot.item.clone().amount(a))
+        displaying()
+    }
+
+    fun insertItem(item: ItemStack) {
+        if (!item.isDefaultItem()) return
+        val key = getKey(item) ?: return
+        map[key] = map[key]!! + item.amount
+        item.amount = 0
+        displaying()
+    }
+
+    fun insertAllItem(item: ItemStack) {
+        if (!item.isDefaultItem()) return
+        val key = getKey(item) ?: return
+        val inv = player.inventory
+        val has = inv.howManyHasSameItem(item)
+        map[key] = map[key]!! + has
+        inv.removeItem(item.clone().amount(has))
         displaying()
     }
 

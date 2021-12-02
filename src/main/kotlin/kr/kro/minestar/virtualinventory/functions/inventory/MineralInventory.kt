@@ -2,9 +2,9 @@ package kr.kro.minestar.virtualinventory.functions.inventory
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.item
-import kr.kro.minestar.utility.string.toPlayer
+import kr.kro.minestar.utility.item.setDisplay
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
-import kr.kro.minestar.virtualinventory.functions.interfaces.VirtualInventory
+import kr.kro.minestar.virtualinventory.functions.VirtualInventory
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
@@ -14,6 +14,7 @@ import java.io.File
 
 class MineralInventory(override val player: Player) : VirtualInventory {
     override val title = "[광물 인벤토리]"
+    override val iconItem = Material.DIAMOND.item().setDisplay("§b[§f광물 인벤토리§b]")
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
     override val data = YamlConfiguration.loadConfiguration(file)
     override val map: HashMap<Slot, Int> = hashMapOf(

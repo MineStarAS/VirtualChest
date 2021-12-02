@@ -1,9 +1,8 @@
 package kr.kro.minestar.virtualinventory
 
-import kr.kro.minestar.utility.string.toServer
 import kr.kro.minestar.virtualinventory.events.AlwaysEvent
 import kr.kro.minestar.virtualinventory.functions.Util
-import kr.kro.minestar.virtualinventory.functions.interfaces.VirtualInventory
+import kr.kro.minestar.virtualinventory.functions.VirtualInventory
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin

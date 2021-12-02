@@ -2,18 +2,20 @@ package kr.kro.minestar.virtualinventory.functions.inventory
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.item
-import kr.kro.minestar.utility.string.toPlayer
+import kr.kro.minestar.utility.item.setDisplay
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
-import kr.kro.minestar.virtualinventory.functions.interfaces.VirtualInventory
+import kr.kro.minestar.virtualinventory.functions.VirtualInventory
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemStack
 import java.io.File
 
 class WoolInventory(override val player: Player) : VirtualInventory {
     override val title = "[양털 인벤토리]"
+    override val iconItem = Material.WHITE_WOOL.item().setDisplay(title)
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
     override val data = YamlConfiguration.loadConfiguration(file)
     override val map: HashMap<Slot, Int> = hashMapOf(

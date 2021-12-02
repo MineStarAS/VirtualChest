@@ -1,7 +1,6 @@
 package kr.kro.minestar.virtualinventory.functions
 
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
-import kr.kro.minestar.virtualinventory.functions.interfaces.VirtualInventory
 import org.bukkit.entity.Player
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
