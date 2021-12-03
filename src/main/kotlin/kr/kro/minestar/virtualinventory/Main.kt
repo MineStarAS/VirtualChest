@@ -1,5 +1,7 @@
 package kr.kro.minestar.virtualinventory
 
+import kr.kro.minestar.virtualinventory.commands.ChestCMD
+import kr.kro.minestar.virtualinventory.commands.InventoryCMD
 import kr.kro.minestar.virtualinventory.events.AlwaysEvent
 import kr.kro.minestar.virtualinventory.functions.Util
 import kr.kro.minestar.virtualinventory.functions.VirtualInventory
@@ -18,15 +20,15 @@ class Main : JavaPlugin() {
     override fun onEnable() {
         pl = this
         logger.info("$prefix §aEnable")
-        getCommand("inventory")?.setExecutor(CMD)
-        Bukkit.getPluginManager().registerEvents(AlwaysEvent(), this)
+        getCommand("inventory")?.setExecutor(InventoryCMD)
+        getCommand("chest")?.setExecutor(ChestCMD)
+        Bukkit.getPluginManager().registerEvents(AlwaysEvent, this)
         for (player in Bukkit.getOnlinePlayers()) registerInventories(player)
     }
 
     override fun onDisable() {
         for (l in map.values) for (c in l) c.save()
     }
-
 
     fun registerInventories(player: Player) {
         val path = "kr.kro.minestar.virtualinventory.functions.inventory"

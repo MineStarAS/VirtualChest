@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 
-class AlwaysEvent : Listener {
+object AlwaysEvent : Listener {
     @EventHandler
     fun join(e: PlayerJoinEvent) {
         pl.registerInventories(e.player)

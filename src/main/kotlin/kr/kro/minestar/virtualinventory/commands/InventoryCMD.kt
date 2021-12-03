@@ -1,6 +1,5 @@
-package kr.kro.minestar.virtualinventory
+package kr.kro.minestar.virtualinventory.commands
 
-import kr.kro.minestar.utility.string.toPlayer
 import kr.kro.minestar.virtualinventory.functions.Util
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -8,7 +7,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 
-object CMD : CommandExecutor, TabCompleter {
+object InventoryCMD : CommandExecutor, TabCompleter {
     private val args0 = listOf("open")
     override fun onCommand(p: CommandSender, cmd: Command, label: String, args: Array<out String>): Boolean {
         if (p !is Player) return false

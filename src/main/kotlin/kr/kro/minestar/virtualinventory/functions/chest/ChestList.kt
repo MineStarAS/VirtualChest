@@ -25,7 +25,7 @@ class ChestList(val player: Player) : Listener {
     val gui = Bukkit.createInventory(null, 9 * 2, "[가상창고 목록]")
 
     init {
-        createFile()
+        if (!createFile()) load()
         setMap()
         openGUI()
     }
@@ -62,6 +62,7 @@ class ChestList(val player: Player) : Listener {
         if (e.clickedInventory == e.view.topInventory) when (e.click) {
             ClickType.LEFT -> {
                 if (slot in 0 until 9) if (item.type == Material.CHEST) return openChest(slot)
+                openVirtualInventory(item)
             }
         }
     }
@@ -88,7 +89,7 @@ class ChestList(val player: Player) : Listener {
         player.openInventory(gui)
     }
 
-    fun unlockChest(int: Int){
+    fun unlockChest(int: Int) {
         if (array.size <= int) return
         array[int] = true
         save()
