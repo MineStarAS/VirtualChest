@@ -8,6 +8,8 @@ plugins {
 group = "kr.kro.minestar"
 version = "1.0.0"
 
+val plugins = File("C:\\Users\\MineStar\\Desktop\\MC Server folder\\MCserver 1.17.1 - MineFarm\\plugins")
+
 repositories {
     mavenCentral()
     maven("https://papermc.io/repo/repository/maven-public/")
@@ -62,7 +64,6 @@ tasks {
             // jar file copy
             copy {
                 from(archiveFile)
-                val plugins = File("C:\\Users\\MineStar\\Desktop\\MC Server folder\\MCserver 1.17.1 - vanilla\\plugins")
                 into(if (File(plugins, archiveFileName.get()).exists()) plugins else plugins)
             }
         }
