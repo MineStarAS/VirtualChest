@@ -3,6 +3,7 @@ package kr.kro.minestar.virtualinventory.functions
 import kr.kro.minestar.utility.inventory.howManyHasSameItem
 import kr.kro.minestar.utility.inventory.howManyToAdd
 import kr.kro.minestar.utility.item.*
+import kr.kro.minestar.utility.material.item
 import kr.kro.minestar.utility.number.addComma
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
 import org.bukkit.Bukkit

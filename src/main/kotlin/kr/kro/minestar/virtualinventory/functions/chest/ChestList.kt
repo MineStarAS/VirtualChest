@@ -1,7 +1,7 @@
 package kr.kro.minestar.virtualinventory.functions.chest
 
-import kr.kro.minestar.utility.item.item
-import kr.kro.minestar.utility.item.setDisplay
+import kr.kro.minestar.utility.item.display
+import kr.kro.minestar.utility.material.item
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
 import kr.kro.minestar.virtualinventory.functions.VirtualInventory
 import org.bukkit.Bukkit
@@ -108,7 +108,7 @@ class ChestList(val player: Player) : Listener {
     fun chestItem(boolean: Boolean, int: Int): ItemStack {
         val item = if (boolean) Material.CHEST.item()
         else Material.BARRIER.item()
-        item.setDisplay("§e[§f${int + 1} 번 창고§e]")
+        item.display("§e[§f${int + 1} 번 창고§e]")
         return item
     }
 }

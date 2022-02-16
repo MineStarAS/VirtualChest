@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.6.10"
     id("com.github.johnrengelman.shadow") version "7.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
@@ -18,14 +18,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly(kotlin("stdlib"))
+    implementation(kotlin("stdlib"))
     compileOnly("net.kyori:adventure-api:4.9.3")
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
 
     //project_TL
 
     //MineStar
-    implementation("kr.kro.minestar:Utility-API:1.2.7")
+    compileOnly("kr.kro.minestar:Utility-API:1.6.1")
 
     //other
     implementation("org.reflections:reflections:0.9.12")
@@ -33,7 +33,7 @@ dependencies {
 
 tasks {
     compileKotlin{
-        kotlinOptions.jvmTarget = "16"
+        kotlinOptions.jvmTarget = "17"
     }
     javadoc {
         options.encoding = "UTF-8"

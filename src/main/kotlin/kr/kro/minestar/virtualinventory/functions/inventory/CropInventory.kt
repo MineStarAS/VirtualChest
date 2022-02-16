@@ -1,9 +1,8 @@
 package kr.kro.minestar.virtualinventory.functions.inventory
 
 import kr.kro.minestar.utility.item.Slot
-import kr.kro.minestar.utility.item.item
-import kr.kro.minestar.utility.item.setDisplay
-import kr.kro.minestar.utility.string.toPlayer
+import kr.kro.minestar.utility.item.display
+import kr.kro.minestar.utility.material.item
 import kr.kro.minestar.virtualinventory.Main.Companion.pl
 import kr.kro.minestar.virtualinventory.functions.VirtualInventory
 import org.bukkit.Bukkit
@@ -14,14 +13,13 @@ import org.bukkit.block.data.Ageable
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.block.BlockDropItemEvent
 import org.bukkit.event.player.PlayerHarvestBlockEvent
 import org.bukkit.inventory.Inventory
 import java.io.File
 
 class CropInventory(override val player: Player) : VirtualInventory {
     override val title = "[작물 인벤토리]"
-    override val iconItem = Material.WHEAT.item().setDisplay("§a[§f작물 인벤토리§a]")
+    override val iconItem = Material.WHEAT.item().display("§a[§f작물 인벤토리§a]")
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
     override val data = YamlConfiguration.loadConfiguration(file)
     override val map: HashMap<Slot, Int> = hashMapOf(
@@ -43,7 +41,7 @@ class CropInventory(override val player: Player) : VirtualInventory {
         Pair(Slot(2, 4, Material.MELON_SLICE.item()), 0),
 
 
-    )
+        )
     override val blockList = listOf(
         Material.WHEAT_SEEDS,
         Material.CARROTS,
