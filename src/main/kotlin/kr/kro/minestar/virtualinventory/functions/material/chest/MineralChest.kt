@@ -1,22 +1,23 @@
-package kr.kro.minestar.virtualinventory.functions.inventory
+package kr.kro.minestar.virtualinventory.functions.material.chest
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.display
 import kr.kro.minestar.utility.material.item
-import kr.kro.minestar.virtualinventory.Main.Companion.pl
-import kr.kro.minestar.virtualinventory.functions.VirtualInventory
+import kr.kro.minestar.virtualinventory.Main
+import kr.kro.minestar.virtualinventory.functions.MaterialChest
 import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import java.io.File
 
-class MineralInventory(override val player: Player) : VirtualInventory {
+class MineralChest(override val player: Player) : MaterialChest {
+    override val pl = Main.pl
     override val title = "[광물 인벤토리]"
     override val iconItem = Material.DIAMOND.item().display("§b[§f광물 인벤토리§b]")
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
-    override val data = YamlConfiguration.loadConfiguration(file)
     override val map: HashMap<Slot, Int> = hashMapOf(
         Pair(Slot(0, 0, Material.COBBLESTONE.item()), 0),
         Pair(Slot(0, 1, Material.COBBLED_DEEPSLATE.item()), 0),
@@ -58,5 +59,14 @@ class MineralInventory(override val player: Player) : VirtualInventory {
 
     init {
         init()
+    }
+
+    @EventHandler
+    fun breakBlock(e: BlockBreakEvent) {
+        if (e.player != player) return
+        if (!blockList.contains(e.block.type)) return
+        e.isDropItems = false
+        val items = e.block.getDrops(player.inventory.itemInMainHand)
+        for (item in items) addItem(item)
     }
 }

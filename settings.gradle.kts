@@ -1,1 +1,1 @@
-rootProject.name = "VirtualInventory"
+rootProject.name = "VirtualChest"

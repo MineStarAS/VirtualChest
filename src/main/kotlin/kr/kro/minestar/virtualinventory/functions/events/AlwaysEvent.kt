@@ -1,6 +1,5 @@
-package kr.kro.minestar.virtualinventory.events
+package kr.kro.minestar.virtualinventory.functions.events
 
-import kr.kro.minestar.virtualinventory.Main.Companion.pl
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
@@ -8,6 +7,5 @@ import org.bukkit.event.player.PlayerJoinEvent
 object AlwaysEvent : Listener {
     @EventHandler
     fun join(e: PlayerJoinEvent) {
-        pl.registerInventories(e.player)
     }
 }
