@@ -1,9 +1,10 @@
-package kr.kro.minestar.virtualinventory
+package kr.kro.minestar.virtualchest
 
-import kr.kro.minestar.virtualinventory.commands.ChestCMD
-import kr.kro.minestar.virtualinventory.functions.events.AlwaysEvent
-import kr.kro.minestar.virtualinventory.functions.ChestClass
-import kr.kro.minestar.virtualinventory.functions.ChestClass.openedChest
+import kr.kro.minestar.virtualchest.commands.ChestCMD
+import kr.kro.minestar.virtualchest.functions.events.AlwaysEvent
+import kr.kro.minestar.virtualchest.functions.ChestClass
+import kr.kro.minestar.virtualchest.functions.ChestClass.openedChest
+import kr.kro.minestar.virtualchest.functions.ChestClass.playerChest
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -23,5 +24,6 @@ class Main : JavaPlugin() {
 
     override fun onDisable() {
         for (chest in openedChest) chest.save()
+        for (t in playerChest.values) for (c in t.values) c.save()
     }
 }

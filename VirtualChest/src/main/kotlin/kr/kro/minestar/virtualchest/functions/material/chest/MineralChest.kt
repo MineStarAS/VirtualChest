@@ -1,12 +1,14 @@
-package kr.kro.minestar.virtualinventory.functions.material.chest
+package kr.kro.minestar.virtualchest.functions.material.chest
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.display
 import kr.kro.minestar.utility.material.item
-import kr.kro.minestar.virtualinventory.Main
-import kr.kro.minestar.virtualinventory.functions.MaterialChest
+import kr.kro.minestar.virtualchest.Main
+import kr.kro.minestar.virtualchest.functions.MaterialChest
 import org.bukkit.Bukkit
+import org.bukkit.GameMode
 import org.bukkit.Material
+import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.BlockBreakEvent
@@ -18,7 +20,8 @@ class MineralChest(override val player: Player) : MaterialChest {
     override val title = "[광물 인벤토리]"
     override val iconItem = Material.DIAMOND.item().display("§b[§f광물 인벤토리§b]")
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
-    override val map: HashMap<Slot, Int> = hashMapOf(
+    override val data = YamlConfiguration.loadConfiguration(file)
+    override val itemMap: HashMap<Slot, Int> = hashMapOf(
         Pair(Slot(0, 0, Material.COBBLESTONE.item()), 0),
         Pair(Slot(0, 1, Material.COBBLED_DEEPSLATE.item()), 0),
         Pair(Slot(0, 2, Material.COAL.item()), 0),
@@ -64,6 +67,8 @@ class MineralChest(override val player: Player) : MaterialChest {
     @EventHandler
     fun breakBlock(e: BlockBreakEvent) {
         if (e.player != player) return
+        if (e.player.gameMode == GameMode.CREATIVE) return
+        if (e.isCancelled) return
         if (!blockList.contains(e.block.type)) return
         e.isDropItems = false
         val items = e.block.getDrops(player.inventory.itemInMainHand)

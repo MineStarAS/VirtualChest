@@ -1,12 +1,11 @@
-package kr.kro.minestar.virtualinventory.functions.chest
+package kr.kro.minestar.virtualchest.functions.chest
 
 import kr.kro.minestar.utility.gui.GUI
 import kr.kro.minestar.utility.item.display
 import kr.kro.minestar.utility.item.isSameItem
 import kr.kro.minestar.utility.material.item
-import kr.kro.minestar.virtualinventory.Main
-import kr.kro.minestar.virtualinventory.functions.ChestClass
-import kr.kro.minestar.virtualinventory.functions.ChestClass.playerChest
+import kr.kro.minestar.virtualchest.Main
+import kr.kro.minestar.virtualchest.functions.ChestClass.playerChest
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
@@ -47,7 +46,11 @@ class ChestMenu(override val player: Player) : GUI {
         val slot = e.slot
         if (e.clickedInventory != e.view.topInventory) return
         if (e.click != ClickType.LEFT) return
-        if (slot in 0 until 9) if (item.type == Material.CHEST) return openChest(slot)
+        if (slot in 0 until 9) {
+            if (item.type == Material.CHEST) return openChest(slot)
+            else if (item.type == Material.BARRIER) VirtualChestBuyGUI(player)
+            return
+        }
         for (chest in playerChest[player]!!.values) if (chest.iconItem.isSameItem(item)) chest.openGUI()
     }
 

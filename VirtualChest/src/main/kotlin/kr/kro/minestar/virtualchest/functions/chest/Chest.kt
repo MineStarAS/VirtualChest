@@ -1,14 +1,13 @@
-package kr.kro.minestar.virtualinventory.functions.chest
+package kr.kro.minestar.virtualchest.functions.chest
 
 import kr.kro.minestar.utility.gui.GUI
-import kr.kro.minestar.virtualinventory.Main
-import kr.kro.minestar.virtualinventory.functions.ChestClass.openedChest
+import kr.kro.minestar.virtualchest.Main
+import kr.kro.minestar.virtualchest.functions.ChestClass.openedChest
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.HandlerList
-import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import java.io.File
 

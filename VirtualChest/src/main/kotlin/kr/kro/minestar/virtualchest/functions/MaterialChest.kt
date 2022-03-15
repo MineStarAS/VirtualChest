@@ -1,5 +1,7 @@
-package kr.kro.minestar.virtualinventory.functions
+package kr.kro.minestar.virtualchest.functions
 
+import kr.kro.minestar.utility.event.disable
+import kr.kro.minestar.utility.event.enable
 import kr.kro.minestar.utility.gui.GUI
 import kr.kro.minestar.utility.inventory.howManyHasSameItem
 import kr.kro.minestar.utility.inventory.howManyToAdd
@@ -9,10 +11,9 @@ import kr.kro.minestar.utility.number.addComma
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.event.EventHandler
-import org.bukkit.event.HandlerList
-import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.inventory.ItemStack
 import java.io.File
@@ -21,19 +22,35 @@ interface MaterialChest : GUI {
     val title: String
     val iconItem: ItemStack
     val file: File
-    val map: HashMap<Slot, Int>
+    val data: YamlConfiguration
+    val itemMap: HashMap<Slot, Int>
     val blockList: List<Material>
 
     fun init() {
         if (!ChestClass.playerChest.contains(player)) ChestClass.playerChest[player] = hashMapOf()
-        ChestClass.playerChest[player]!![javaClass.simpleName] = this
+        for (key in data.getKeys(false)) {
+            val material = Material.valueOf(key)
+            for (slot in itemMap.keys) {
+                if (slot.item.type != material) continue
+                itemMap[slot] = data.getInt(key)
+                break
+            }
+        }
+        val map = ChestClass.playerChest[player]!!
+        map[javaClass.simpleName] = this
+        enable(pl)
     }
 
     @EventHandler
     fun quit(e: PlayerQuitEvent) {
         if (player != e.player) return
         save()
-        HandlerList.unregisterAll(this)
+        disable()
+    }
+
+    override fun openGUI() {
+        displaying()
+        player.openInventory(gui)
     }
 
     @EventHandler
@@ -52,34 +69,31 @@ interface MaterialChest : GUI {
         }
     }
 
+    @EventHandler
+    override fun closeGUI(e: InventoryCloseEvent) {
+    }
+
     override fun displaying() {
         gui.clear()
-        val data = YamlConfiguration.loadConfiguration(file)
-        for (key in data.getKeys(false)) {
-            val k = getKey(Material.getMaterial(key ?: continue)?.item() ?: continue) ?: continue
-            map[k] = data.getInt(key)
-        }
-        val keys = map.keys
-        for (s in keys) {
-            val item = s.item.clone()
-            item.addLore("§7[보유량] ${map[s]!!.addComma()} 개")
+        for (slot in itemMap.keys) {
+            val item = slot.item.clone()
+            item.addLore("§7[보유량] ${itemMap[slot]!!.addComma()} 개")
             item.addLore(" ")
             item.addLore("§8[좌클릭] 한 세트 꺼내기")
             item.addLore("§8[쉬프트 좌클릭] 최대 갯수 꺼내기")
-            gui.setItem(s.get, item)
+            gui.setItem(slot.get, item)
         }
     }
 
     fun save() {
-        val data = YamlConfiguration()
-        for (s in map.keys) data[s.item.type.toString()] = map[s]
+        for (s in itemMap) data[s.key.item.type.toString()] = s.value
         data.save(file)
     }
 
     fun addItem(item: ItemStack) {
         val slot = getKey(item) ?: return
         val amount = item.amount
-        map[slot] = map[slot]!! + amount
+        itemMap[slot] = itemMap[slot]!! + amount
     }
 
     fun takeOutItem(item: ItemStack, amount: Int) {
@@ -88,8 +102,8 @@ interface MaterialChest : GUI {
         var a = amount
         val can = inv.howManyToAdd(slot.item)
         if (a > can) a = can
-        if (map[slot]!! < a) a = map[slot]!!
-        map[slot] = map[slot]!! - a
+        if (itemMap[slot]!! < a) a = itemMap[slot]!!
+        itemMap[slot] = itemMap[slot]!! - a
         inv.addItem(slot.item.clone().amount(a))
         displaying()
     }
@@ -97,7 +111,7 @@ interface MaterialChest : GUI {
     fun insertItem(item: ItemStack) {
         if (!item.isDefaultItem()) return
         val key = getKey(item) ?: return
-        map[key] = map[key]!! + item.amount
+        itemMap[key] = itemMap[key]!! + item.amount
         item.amount = 0
         displaying()
     }
@@ -107,13 +121,13 @@ interface MaterialChest : GUI {
         val key = getKey(item) ?: return
         val inv = player.inventory
         val has = inv.howManyHasSameItem(item)
-        map[key] = map[key]!! + has
+        itemMap[key] = itemMap[key]!! + has
         inv.removeItem(item.clone().amount(has))
         displaying()
     }
 
     fun getKey(item: ItemStack): Slot? {
-        for (s in map.keys) if (s.item.isSameItem(item)) return s
+        for (s in itemMap.keys) if (s.item.isSameItem(item)) return s
         return null
     }
 

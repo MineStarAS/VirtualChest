@@ -1,6 +1,6 @@
-package kr.kro.minestar.virtualinventory.commands
+package kr.kro.minestar.virtualchest.commands
 
-import kr.kro.minestar.virtualinventory.functions.chest.ChestMenu
+import kr.kro.minestar.virtualchest.functions.chest.ChestMenu
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

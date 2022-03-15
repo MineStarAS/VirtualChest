@@ -1,6 +1,6 @@
-package kr.kro.minestar.virtualinventory.functions
+package kr.kro.minestar.virtualchest.functions
 
-import kr.kro.minestar.virtualinventory.functions.chest.Chest
+import kr.kro.minestar.virtualchest.functions.chest.Chest
 import org.bukkit.entity.Player
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
@@ -9,7 +9,7 @@ import java.util.stream.Collectors
 object ChestClass {
     val openedChest = hashSetOf<Chest>()
 
-    val materialChestList = classList("kr.kro.minestar.virtualinventory.functions.material.chest")
+    val materialChestList = classList("kr.kro.minestar.virtualchest.functions.material.chest")
 
     val playerChest = hashMapOf<Player,HashMap<String, MaterialChest>>()
 

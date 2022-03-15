@@ -1,15 +1,13 @@
-package kr.kro.minestar.virtualinventory.functions.material.chest
+package kr.kro.minestar.virtualchest.functions.material.chest
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.display
 import kr.kro.minestar.utility.material.item
-import kr.kro.minestar.virtualinventory.Main
-import kr.kro.minestar.virtualinventory.functions.MaterialChest
-import org.bukkit.Bukkit
-import org.bukkit.Material
-import org.bukkit.Sound
-import org.bukkit.SoundCategory
+import kr.kro.minestar.virtualchest.Main
+import kr.kro.minestar.virtualchest.functions.MaterialChest
+import org.bukkit.*
 import org.bukkit.block.data.Ageable
+import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.BlockBreakEvent
@@ -22,7 +20,8 @@ class CropChest(override val player: Player) : MaterialChest {
     override val title = "[작물 인벤토리]"
     override val iconItem = Material.WHEAT.item().display("§a[§f작물 인벤토리§a]")
     override val file = File("${pl.dataFolder}/${player.uniqueId}", "${this.javaClass.simpleName}.yml")
-    override val map: HashMap<Slot, Int> = hashMapOf(
+    override val data = YamlConfiguration.loadConfiguration(file)
+    override val itemMap: HashMap<Slot, Int> = hashMapOf(
         Pair(Slot(0, 0, Material.WHEAT_SEEDS.item()), 0),
         Pair(Slot(0, 3, Material.BEETROOT_SEEDS.item()), 0),
         Pair(Slot(0, 4, Material.MELON_SEEDS.item()), 0),
@@ -41,6 +40,7 @@ class CropChest(override val player: Player) : MaterialChest {
         Pair(Slot(2, 4, Material.MELON_SLICE.item()), 0),
         )
     override val blockList = listOf(
+        Material.WHEAT,
         Material.WHEAT_SEEDS,
         Material.CARROTS,
         Material.POTATOES,
@@ -62,6 +62,8 @@ class CropChest(override val player: Player) : MaterialChest {
     @EventHandler
     fun breakBlock(e: BlockBreakEvent) {
         if (e.player != player) return
+        if (e.player.gameMode == GameMode.CREATIVE) return
+        if (e.isCancelled) return
         if (!blockList.contains(e.block.type)) return
         e.isDropItems = false
         val items = e.block.getDrops(player.inventory.itemInMainHand)
