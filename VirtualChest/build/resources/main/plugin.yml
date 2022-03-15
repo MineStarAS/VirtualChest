@@ -1,0 +1,8 @@
+name: VirtualChest
+version: 1.0.0
+main: kr.kro.minestar.virtualinventory.Main
+api-version: 1.17
+authors: [ MineStar ]
+commands:
+  inventory:
+  chest:

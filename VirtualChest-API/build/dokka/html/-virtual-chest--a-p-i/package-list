@@ -1,0 +1,9 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:kr.kro.minestar.virtualchest.api////PointingToDeclaration/-virtual-chest--a-p-i/kr.kro.minestar.virtualchest.api/index.html
+$dokka.location:kr.kro.minestar.virtualchest.api/VirtualChestOpenGUI///PointingToDeclaration/-virtual-chest--a-p-i/kr.kro.minestar.virtualchest.api/-virtual-chest-open-g-u-i/index.html
+$dokka.location:kr.kro.minestar.virtualchest.api/VirtualChestOpenGUI/chest/#org.bukkit.entity.Player#kotlin.Int/PointingToDeclaration/-virtual-chest--a-p-i/kr.kro.minestar.virtualchest.api/-virtual-chest-open-g-u-i/chest.html
+$dokka.location:kr.kro.minestar.virtualchest.api/VirtualChestOpenGUI/chestMenu/#org.bukkit.entity.Player/PointingToDeclaration/-virtual-chest--a-p-i/kr.kro.minestar.virtualchest.api/-virtual-chest-open-g-u-i/chest-menu.html
+$dokka.location:kr.kro.minestar.virtualchest.api/VirtualChestOpenGUI/virtualChestBuyGUI/#org.bukkit.entity.Player/PointingToDeclaration/-virtual-chest--a-p-i/kr.kro.minestar.virtualchest.api/-virtual-chest-open-g-u-i/virtual-chest-buy-g-u-i.html
+kr.kro.minestar.virtualchest.api
+

@@ -1,0 +1,107 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "kr.kro.minestar",
+    "module": "VirtualChest-API",
+    "version": "1.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "VirtualChest-API-1.0.1.jar",
+          "url": "VirtualChest-API-1.0.1.jar",
+          "size": 2043,
+          "sha512": "bdd8972d62a9cdb50c832b6fa1d805512d4c1f84ea191d6ba4f3815f2fc8d3384ac3661aded30af0d6ef35e5e9180566d34e31f671881b88cca44192e897078b",
+          "sha256": "7eee6f5736513d087d42457da75b04721ae7931cac8353768257f4e003ded2c9",
+          "sha1": "7b3c36ed8f95d6c0b29ad8e8c7eaad829bce3ca6",
+          "md5": "1143a027572ac88d570e8ef853d7c1d1"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "org.reflections",
+          "module": "reflections",
+          "version": {
+            "requires": "0.10.2"
+          }
+        },
+        {
+          "group": "net.projecttl",
+          "module": "project-economy-api",
+          "version": {
+            "requires": "2.1.3"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "VirtualChest-API-1.0.1.jar",
+          "url": "VirtualChest-API-1.0.1.jar",
+          "size": 2043,
+          "sha512": "bdd8972d62a9cdb50c832b6fa1d805512d4c1f84ea191d6ba4f3815f2fc8d3384ac3661aded30af0d6ef35e5e9180566d34e31f671881b88cca44192e897078b",
+          "sha256": "7eee6f5736513d087d42457da75b04721ae7931cac8353768257f4e003ded2c9",
+          "sha1": "7b3c36ed8f95d6c0b29ad8e8c7eaad829bce3ca6",
+          "md5": "1143a027572ac88d570e8ef853d7c1d1"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "VirtualChest-API-1.0.1-all.jar",
+          "url": "VirtualChest-API-1.0.1-all.jar",
+          "size": 2697391,
+          "sha512": "da07cb01b1d19f1072b2e75e5f7cb4a0b64edde474864a3a09b1644ec2b97d416c4b3923dfba99cd5eed83a87158f437a10265e33dfcb2bf82caca9995f80faf",
+          "sha256": "1976638deb35805b2c4f34defbcec6865f9daf4564789594209190554707863e",
+          "sha1": "4a9dc4843818fed26584369a4c9e4181db0e933b",
+          "md5": "7684b26ae30063d14763807a25924ad0"
+        }
+      ]
+    }
+  ]
+}
