@@ -90,10 +90,11 @@ interface MaterialChest : GUI {
         data.save(file)
     }
 
-    fun addItem(item: ItemStack) {
-        val slot = getKey(item) ?: return
+    fun addItem(item: ItemStack): Boolean {
+        val slot = getKey(item) ?: return false
         val amount = item.amount
         itemMap[slot] = itemMap[slot]!! + amount
+        return true
     }
 
     fun takeOutItem(item: ItemStack, amount: Int) {

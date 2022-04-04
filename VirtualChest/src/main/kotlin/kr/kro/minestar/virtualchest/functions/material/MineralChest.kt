@@ -1,4 +1,4 @@
-package kr.kro.minestar.virtualchest.functions.material.chest
+package kr.kro.minestar.virtualchest.functions.material
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.display

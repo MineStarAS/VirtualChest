@@ -1,8 +1,9 @@
-package kr.kro.minestar.virtualchest.functions.material.chest
+package kr.kro.minestar.virtualchest.functions.material
 
 import kr.kro.minestar.utility.item.Slot
 import kr.kro.minestar.utility.item.display
 import kr.kro.minestar.utility.material.item
+import kr.kro.minestar.utility.string.toServer
 import kr.kro.minestar.virtualchest.Main
 import kr.kro.minestar.virtualchest.functions.MaterialChest
 import org.bukkit.*
@@ -26,6 +27,7 @@ class CropChest(override val player: Player) : MaterialChest {
         Pair(Slot(0, 3, Material.BEETROOT_SEEDS.item()), 0),
         Pair(Slot(0, 4, Material.MELON_SEEDS.item()), 0),
         Pair(Slot(0, 5, Material.PUMPKIN_SEEDS.item()), 0),
+        Pair(Slot(0, 8, Material.NETHER_WART.item()), 0),
 
         Pair(Slot(1, 0, Material.WHEAT.item()), 0),
         Pair(Slot(1, 1, Material.CARROT.item()), 0),
@@ -52,6 +54,7 @@ class CropChest(override val player: Player) : MaterialChest {
         Material.COCOA,
         Material.SUGAR_CANE,
         Material.SWEET_BERRY_BUSH,
+        Material.NETHER_WART,
     )
     override val gui: Inventory = Bukkit.createInventory(null, 9 * 3, title)
 

@@ -3,7 +3,7 @@
   "component": {
     "group": "kr.kro.minestar",
     "module": "VirtualChest-API",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -27,13 +27,13 @@
       },
       "files": [
         {
-          "name": "VirtualChest-API-1.0.1.jar",
-          "url": "VirtualChest-API-1.0.1.jar",
-          "size": 2043,
-          "sha512": "bdd8972d62a9cdb50c832b6fa1d805512d4c1f84ea191d6ba4f3815f2fc8d3384ac3661aded30af0d6ef35e5e9180566d34e31f671881b88cca44192e897078b",
-          "sha256": "7eee6f5736513d087d42457da75b04721ae7931cac8353768257f4e003ded2c9",
-          "sha1": "7b3c36ed8f95d6c0b29ad8e8c7eaad829bce3ca6",
-          "md5": "1143a027572ac88d570e8ef853d7c1d1"
+          "name": "VirtualChest-API-1.0.0.jar",
+          "url": "VirtualChest-API-1.0.0.jar",
+          "size": 3280,
+          "sha512": "992936484db56370136756dba0a22301b6c75361efa6ff599633d5d868ff86fb86979f5e4f3123ba416704c58b916c1afffc89ba3cc434fbb6fe59ff752ae3dc",
+          "sha256": "df57a308d99a3c50afdb039412ab89d7858b058071b4aa6fe370470253626e8a",
+          "sha1": "0e6f4cce1fc887ee77786a9cf0d9f46f75b08fde",
+          "md5": "cdf3f7e6c704a951cf6ddcd47c7e1b58"
         }
       ]
     },
@@ -50,13 +50,6 @@
       },
       "dependencies": [
         {
-          "group": "org.jetbrains.kotlin",
-          "module": "kotlin-stdlib",
-          "version": {
-            "requires": "1.6.10"
-          }
-        },
-        {
           "group": "org.reflections",
           "module": "reflections",
           "version": {
@@ -69,17 +62,24 @@
           "version": {
             "requires": "2.1.3"
           }
+        },
+        {
+          "group": "kr.kro.minestar",
+          "module": "Utility-API",
+          "version": {
+            "requires": "1.0.0"
+          }
         }
       ],
       "files": [
         {
-          "name": "VirtualChest-API-1.0.1.jar",
-          "url": "VirtualChest-API-1.0.1.jar",
-          "size": 2043,
-          "sha512": "bdd8972d62a9cdb50c832b6fa1d805512d4c1f84ea191d6ba4f3815f2fc8d3384ac3661aded30af0d6ef35e5e9180566d34e31f671881b88cca44192e897078b",
-          "sha256": "7eee6f5736513d087d42457da75b04721ae7931cac8353768257f4e003ded2c9",
-          "sha1": "7b3c36ed8f95d6c0b29ad8e8c7eaad829bce3ca6",
-          "md5": "1143a027572ac88d570e8ef853d7c1d1"
+          "name": "VirtualChest-API-1.0.0.jar",
+          "url": "VirtualChest-API-1.0.0.jar",
+          "size": 3280,
+          "sha512": "992936484db56370136756dba0a22301b6c75361efa6ff599633d5d868ff86fb86979f5e4f3123ba416704c58b916c1afffc89ba3cc434fbb6fe59ff752ae3dc",
+          "sha256": "df57a308d99a3c50afdb039412ab89d7858b058071b4aa6fe370470253626e8a",
+          "sha1": "0e6f4cce1fc887ee77786a9cf0d9f46f75b08fde",
+          "md5": "cdf3f7e6c704a951cf6ddcd47c7e1b58"
         }
       ]
     },
@@ -93,13 +93,13 @@
       },
       "files": [
         {
-          "name": "VirtualChest-API-1.0.1-all.jar",
-          "url": "VirtualChest-API-1.0.1-all.jar",
-          "size": 2697391,
-          "sha512": "da07cb01b1d19f1072b2e75e5f7cb4a0b64edde474864a3a09b1644ec2b97d416c4b3923dfba99cd5eed83a87158f437a10265e33dfcb2bf82caca9995f80faf",
-          "sha256": "1976638deb35805b2c4f34defbcec6865f9daf4564789594209190554707863e",
-          "sha1": "4a9dc4843818fed26584369a4c9e4181db0e933b",
-          "md5": "7684b26ae30063d14763807a25924ad0"
+          "name": "VirtualChest-API-1.0.0-all.jar",
+          "url": "VirtualChest-API-1.0.0-all.jar",
+          "size": 2751840,
+          "sha512": "527330c68f72aee340c75f339fbae76fc348b556bbe7cb2025ddc9d90f0905afa78f4f145a644aa72f3fe11d73fdf63cd95408c7a4802c1aec9e7897b219d4f8",
+          "sha256": "94bfd91c0bb8b1bda5bad38ac2ade7b4734d788980ebcadc3b4652ec1dd76c4e",
+          "sha1": "64ca7b449c138ff1511c25091b614a22bafae04d",
+          "md5": "ae5d92beab3d8ca76e42fb46b0a6e583"
         }
       ]
     }

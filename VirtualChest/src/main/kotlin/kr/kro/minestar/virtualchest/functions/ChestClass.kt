@@ -9,7 +9,7 @@ import java.util.stream.Collectors
 object ChestClass {
     val openedChest = hashSetOf<Chest>()
 
-    val materialChestList = classList("kr.kro.minestar.virtualchest.functions.material.chest")
+    val materialChestList = classList("kr.kro.minestar.virtualchest.functions.material")
 
     val playerChest = hashMapOf<Player,HashMap<String, MaterialChest>>()
 

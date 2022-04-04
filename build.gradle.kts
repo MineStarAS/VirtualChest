@@ -30,7 +30,7 @@ subprojects {
     }
 
     dependencies {
-        implementation(kotlin("stdlib"))
+        compileOnly(kotlin("stdlib"))
         compileOnly("net.kyori:adventure-api:4.10.1")
         compileOnly("io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT")
         compileOnly("com.arcaniax:HeadDatabase-API:1.3.1")
@@ -40,6 +40,6 @@ subprojects {
         implementation("net.projecttl:project-economy-api:2.1.3")
 
         //MineStar
-        compileOnly("kr.kro.minestar:Utility-API:1.6.3")
+        implementation("kr.kro.minestar:Utility-API:1.0.0")
     }
 }
